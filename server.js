@@ -2,14 +2,12 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Importar el archivo JSON
+const menu = require('./menu.json');
+
+// Endpoint /menu que devuelve el JSON externo
 app.get('/menu', (req, res) => {
-    res.json({
-        opciones: [
-            { nombre: 'Framework Web', ruta: '/web' },
-            { nombre: 'Framework Mobile', ruta: '/mobile' },
-            { nombre: 'Framework Servicios', ruta: '/servicios' }
-        ]
-    });
+    res.json(menu);
 });
 
 app.get('/web', (req, res) => res.send('Framework Web conectado'));

@@ -1,0 +1,7 @@
+{
+  "opciones": [
+    { "nombre": "Framework Web", "ruta": "/web" },
+    { "nombre": "Framework Mobile", "ruta": "/mobile" },
+    { "nombre": "Framework Servicios", "ruta": "/servicios" }
+  ]
+}
