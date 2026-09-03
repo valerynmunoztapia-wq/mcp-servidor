@@ -1,7 +1,5 @@
 {
-  "opciones": [
-    { "nombre": "Framework Web", "ruta": "/web" },
-    { "nombre": "Framework Mobile", "ruta": "/mobile" },
-    { "nombre": "Framework Servicios", "ruta": "/servicios" }
-  ]
+  "web": ["React", "Vue", "Angular", "Svelte"],
+  "mobile": ["React Native", "Flutter", "Swift (iOS)", "Kotlin (Android)"],
+  "servicios": ["Express", "FastAPI", "Spring Boot", "Django"]
 }

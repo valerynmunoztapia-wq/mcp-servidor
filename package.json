@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/valerynmunoztapia-wq/mcp-servidor#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.5.4"
   }
 }
 
