@@ -60,4 +60,3 @@ Reinicia Claude Desktop y las 6 tools aparecerán disponibles en el chat.
   "mobile": ["React Native", "Flutter", "Swift (iOS)", "Kotlin (Android)"],
   "servicios": ["Express", "FastAPI", "Spring Boot", "Django"]
 }
-tiene menú contextual
