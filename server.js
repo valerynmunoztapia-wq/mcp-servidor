@@ -104,7 +104,15 @@ server.tool(
 
 // El servidor se comunica por stdio (entrada/salida estándar),
 // que es el transporte clásico de MCP para clientes como Claude Desktop.
-const transport = new StdioServerTransport();
-server.connect(transport);
+async function main() {
+    const transport = new StdioServerTransport();
+    await server.connect(transport);
+}
+
+// Los logs van a stderr: stdout está reservado para los mensajes JSON-RPC.
+main().catch((error) => {
+    console.error("Error al iniciar el servidor MCP:", error);
+    process.exit(1);
+});
 
 

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mcp-servidor": {
+      "command": "node",
+      "args": ["./server.js"]
+    }
+  }
+}
