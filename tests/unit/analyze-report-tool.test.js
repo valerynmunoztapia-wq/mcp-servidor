@@ -26,3 +26,9 @@ test("analyze_report tiene descripción", () => {
         analyzeReportTool.description.length > 0
     );
 });
+test("analyze_report tiene metadata válida", () => {
+    assert.equal(
+        analyzeReportTool.name,
+        "analyze_report"
+    );
+});

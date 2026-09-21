@@ -13,7 +13,18 @@ function calculateRiskLevel(successRate) {
 
     return "HIGH";
 }
+export function calculateCoverageLevel(linesCoverage) {
+    if (linesCoverage >= 80) {
+        return "GOOD";
+    }
 
+    if (linesCoverage >= 60) {
+        return "MEDIUM";
+    }
+
+    return "LOW";
+}
+``
 export default {
     name: "analyze_report",
     description: "Analiza un reporte de pruebas y calcula métricas QA",
@@ -28,14 +39,6 @@ export default {
                 correlationId
             );
 
-            const successRate =
-                report.total === 0
-                    ? 0
-                    : Number(
-                        ((report.passed / report.total) * 100)
-                            .toFixed(2)
-                    );
-
             const analysis = {
                 repo,
                 correlationId,
@@ -44,7 +47,13 @@ export default {
                 failed: report.failed,
                 skipped: report.skipped,
                 successRate,
-                riskLevel: calculateRiskLevel(successRate)
+                riskLevel: calculateRiskLevel(successRate),
+                coverageLevel: calculateCoverageLevel(coverage.lines)
+            };
+            const coverage = {
+                lines: 82,
+                branches: 76,
+                functions: 91
             };
 
             return {
