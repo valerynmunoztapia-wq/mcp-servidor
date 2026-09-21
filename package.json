@@ -4,10 +4,9 @@
     "description": "MCP Server orquestador para automatización de pruebas por dominio y framework.",
     "type": "module",
     "main": "src/server.js",
-    "scripts": {
-      "start": "node src/server.js",
-      "test": "node --test tests/unit/*.test.js"
-    },
+  "scripts": {
+    "test": "node --test"
+  },
     "repository": {
       "type": "git",
       "url": "git+https://github.com/valerynmunoztapia-wq/mcp-servidor.git"
