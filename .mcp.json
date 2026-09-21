@@ -2,7 +2,18 @@
   "mcpServers": {
     "mcp-servidor": {
       "command": "node",
-      "args": ["./server.js"]
+      "args": [
+        "./src/server.js"
+      ]
+    },
+    "idea": {
+      "command": "C:\\Users\\vmunoz2\\AppData\\Local\\Programs\\IntelliJ IDEA 2026.1.4\\bin\\idea64.exe",
+      "args": [
+        "stdioMcpServer"
+      ],
+      "env": {
+        "IJ_MCP_SERVER_PORT": "64342"
+      }
     }
   }
 }

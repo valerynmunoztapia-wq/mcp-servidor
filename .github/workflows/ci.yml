@@ -1,0 +1,66 @@
+# ------------------------------------------------------------------------------
+# CI Pipeline - mcp-servidor
+#
+# Objetivo: validar que el servidor MCP instala dependencias y pasa sus pruebas
+# unitarias en cada push/PR contra main, en múltiples sistemas operativos
+# (Ubuntu y Windows) usando Node.js 24.
+# ------------------------------------------------------------------------------
+name: CI
+
+# ------------------------------------------------------------------------------
+# Disparadores: se ejecuta en pushes directos a main y en pull requests
+# dirigidos a main. Esto cubre tanto cambios ya fusionados como propuestas
+# de cambio antes de integrarse.
+# ------------------------------------------------------------------------------
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# ------------------------------------------------------------------------------
+# Concurrency: cancela ejecuciones anteriores del mismo branch/PR cuando llega
+# un nuevo push, evitando gastar minutos de CI en commits obsoletos.
+# ------------------------------------------------------------------------------
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ----------------------------------------------------------------------------
+  # Job: test
+  # Instala dependencias y ejecuta la suite de pruebas del proyecto en cada
+  # sistema operativo soportado. fail-fast: false permite ver el resultado en
+  # todos los OS aunque uno falle, útil para detectar problemas específicos
+  # de plataforma (rutas, separadores, etc.).
+  # ----------------------------------------------------------------------------
+  test:
+    name: Test (Node ${{ matrix.node-version }} on ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node-version: [18.x, 24.x]
+
+    steps:
+      # Descarga el código del repositorio en el runner
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Configura Node.js 24 y habilita cache automático de npm
+      # basado en package-lock.json para acelerar instalaciones futuras
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      # Instala dependencias de forma reproducible y estricta (usa package-lock.json)
+      - name: Install dependencies
+        run: npm ci
+
+      # Ejecuta la suite de pruebas unitarias del proyecto (node --test)
+      - name: Run tests
+        run: npm test

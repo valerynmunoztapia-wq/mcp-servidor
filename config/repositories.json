@@ -1,0 +1,35 @@
+[
+  {
+    "id": "pruebaAutomatizacion",
+    "domain": "web",
+    "framework": "Selenium-Cucumber",
+    "path": "C:\\Users\\vmunoz2\\OneDrive - Getronics\\Documentos\\pruebaAutomatizacion",
+    "commands": {
+      "install": { "command": "cmd", "args": ["/c", "gradlew.bat", "--refresh-dependencies"], "timeoutMs": 300000 },
+      "test": { "command": "cmd", "args": ["/c", "gradlew.bat", "test"], "timeoutMs": 180000 }
+    },
+    "reportPath": "C:\\Users\\vmunoz2\\.gradle-build\\pruebaAutomatizacion\\test-results\\test\\TEST-Runner.Runner.xml"
+  },
+  {
+    "id": "mobile-automation-framework",
+    "domain": "mobile",
+    "framework": "Appium-Cucumber",
+    "path": "C:\\Users\\vmunoz2\\OneDrive - Getronics\\Documentos\\mobile-automation-framework",
+    "commands": {
+      "install": { "command": "cmd", "args": ["/c", "gradlew.bat", "--refresh-dependencies"], "timeoutMs": 300000 },
+      "test": { "command": "cmd", "args": ["/c", "gradlew.bat", "test", "-Dplatform=android"], "timeoutMs": 180000 }
+    },
+    "reportPath": "build\\test-results\\test\\TEST-runners.TestRunner.xml"
+  },
+  {
+    "id": "framework--servicios",
+    "domain": "servicios",
+    "framework": "Gradle-Cucumber",
+    "path": "C:\\Users\\vmunoz2\\OneDrive - Getronics\\Documentos\\Framework--servicios",
+    "commands": {
+      "install": { "command": "cmd", "args": ["/c", "gradlew.bat", "--refresh-dependencies"], "timeoutMs": 300000 },
+      "test": { "command": "cmd", "args": ["/c", "gradlew.bat", "test"], "timeoutMs": 180000 }
+    },
+    "reportPath": "build\\test-results\\test\\cucumber.xml"
+  }
+]
